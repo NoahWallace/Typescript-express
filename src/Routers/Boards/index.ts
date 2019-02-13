@@ -1,7 +1,7 @@
-import { Router } from 'express';
+import {Router} from 'express';
+import {getBoard, getBoardAndError} from '../../Controllers/Boards';
 
 export const boardsRouter = Router();
 
-
-boardsRouter.get("/test",(req,res)=>res.json({woo:'hoo'}));
-boardsRouter.get("/fail",(req,res,next)=>next(new Error("o my geez")));
+boardsRouter.get("/test", getBoard);
+boardsRouter.get("/fail", getBoardAndError);
