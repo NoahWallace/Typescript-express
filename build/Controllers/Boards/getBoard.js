@@ -8,11 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Services_1 = require("../../Services");
+const index_1 = require("../../index");
 exports.getBoard = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const Db = index_1.mongoClient.db;
     try {
-        const boards = yield Services_1.getBoardsArray();
-        res.json(boards);
+        const users = yield Db.collection("users")
+            .find()
+            .toArray();
+        res.json(users);
     }
     catch (e) {
         next(e);
